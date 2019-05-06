@@ -1,8 +1,24 @@
 <html>
 <head>
-  <script>
-    alert('Hello, world');
-  </script>
+    <script> 
+	function readFile(filename){
+	alert('start twice');
+	var fso = new ActiveXObject("Scripting.FileSystemObject");
+	alert('getin while');
+	var f = fso.OpenTextFile(filename,1);
+	var s = "";
+	
+	while (!f.AtEndOfStream){
+		alert('ok');
+		s += f.ReadLine()+"\n";
+		
+	}
+	f.Close();
+	return s;
+	}
+	alert('start once');
+	alert(readFile('database.txt'));
+	</script>
 </head>
 <body>
 </body>
