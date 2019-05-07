@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.9.1.min.js"></script>
+	</head>
+	<body>
+		<h1>Sherrlock的试卷查找系统</h1>
+		<style>
+		.inputText{
+			height:400px;
+			width:800px;
+			}
+		</style>
+		<input id="test" type="text" class="inputText"/>
+		</br>
+		<input type="image" id="btnCommit" src="https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=3075e391df58ccbf0fb1bd6878b1d75b/377adab44aed2e73087fcc0f8901a18b87d6fa7b.jpg" width="800" height="800"/>
+		<br/>
+		<script>
+			$("#btnCommit").click(function(){
+				var value = $("#test").val();
+				$.ajax({
+					type:"get",
+					url:"https://raw.githubusercontent.com/sherrlock0535/Phelper/master/database.txt",
+					async:true,
+					success:function(data){
+						var str = data.split("\n");
+						for(var i=0;i<str.length;i++){
+							var index = str[i].indexOf(value);
+							
+							if(index >= 0 ){
+								//alert(str[i]);
+								document.write(str[i]);
+								document.write("<br/>");
+							}
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
